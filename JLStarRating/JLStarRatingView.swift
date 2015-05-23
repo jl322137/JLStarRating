@@ -11,12 +11,14 @@ import UIKit
 @IBDesignable
 public class JLStarRatingView: UIView {
 
+    // MARK: 星星数量
     @IBInspectable var starCount: NSInteger = 5 {
         didSet {
             self.initialSetup()
         }
     }
 
+    // MARK: 未选中星星的图片样式
     @IBInspectable var emptyImage: UIImage = UIImage() {
         didSet {
             self.initialSetup()
@@ -24,12 +26,14 @@ public class JLStarRatingView: UIView {
 
     }
 
+    // MARK: 选中的星星图片样式
     @IBInspectable var fillImage: UIImage = UIImage() {
         didSet {
             self.initialSetup()
         }
     }
 
+    // MARK: 星星分值
     @IBInspectable var progress: CGFloat = 0 {
         didSet {
             if progress > CGFloat(self.starCount) {
@@ -43,10 +47,7 @@ public class JLStarRatingView: UIView {
         }
     }
 
-    public override func prepareForInterfaceBuilder() {
-
-    }
-
+    // MARK: 手势
     public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch: UITouch = touches.first as! UITouch
         let point: CGPoint = touch.locationInView(self)
@@ -59,6 +60,7 @@ public class JLStarRatingView: UIView {
         self.progress = point.x / (self.frame.size.width / CGFloat(self.starCount))
     }
 
+    //  MARK: 画
     func initialSetup() {
 
         for subview in self.subviews {
@@ -80,6 +82,7 @@ public class JLStarRatingView: UIView {
         self.invalidateIntrinsicContentSize()
     }
 
+    // MARK: 创建星星
     func createStar(frame: CGRect, var fillPercent: CGFloat) -> UIImageView {
 
         if fillPercent > 1 {
@@ -110,6 +113,7 @@ public class JLStarRatingView: UIView {
         return imageView
     }
 
+    // MARK: view大小
     override public func intrinsicContentSize() -> CGSize {
         var size: CGSize  = emptyImage.size
         size = CGSize(width: size.width / UIScreen.mainScreen().scale, height: size.height / UIScreen.mainScreen().scale)
