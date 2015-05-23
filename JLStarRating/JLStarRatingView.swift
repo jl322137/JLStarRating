@@ -43,17 +43,8 @@ public class JLStarRatingView: UIView {
         }
     }
 
-    public required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.addGes()
-    }
-
     public override func prepareForInterfaceBuilder() {
-        self.addGes()
-    }
 
-    func addGes() {
-        self.userInteractionEnabled = true
     }
 
     public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
