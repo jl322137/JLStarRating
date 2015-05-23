@@ -43,16 +43,29 @@ public class JLStarRatingView: UIView {
         }
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-
-    required public init(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.addGes()
     }
 
-    override public func prepareForInterfaceBuilder() {
-        
+    public override func prepareForInterfaceBuilder() {
+        self.addGes()
+    }
+
+    func addGes() {
+        self.userInteractionEnabled = true
+    }
+
+    public override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let point: CGPoint = touch.locationInView(self)
+        self.progress = point.x / (self.frame.size.width / CGFloat(self.starCount))
+    }
+
+    public override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let point: CGPoint = touch.locationInView(self)
+        self.progress = point.x / (self.frame.size.width / CGFloat(self.starCount))
     }
 
     func initialSetup() {
