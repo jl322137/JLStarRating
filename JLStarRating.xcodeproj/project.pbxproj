@@ -13,6 +13,9 @@
 		3D38EF541B1015EC00BDDDAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D38EF531B1015EC00BDDDAD /* Images.xcassets */; };
 		3D38EF571B1015EC00BDDDAD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D38EF551B1015EC00BDDDAD /* LaunchScreen.xib */; };
 		3D38EF631B1015EC00BDDDAD /* JLStarRatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38EF621B1015EC00BDDDAD /* JLStarRatingTests.swift */; };
+		3D38EF6D1B10160A00BDDDAD /* JLStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38EF6C1B10160A00BDDDAD /* JLStarRatingView.swift */; };
+		3D38EF701B1016D800BDDDAD /* star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D38EF6E1B1016D800BDDDAD /* star_gray.png */; };
+		3D38EF711B1016D800BDDDAD /* star_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D38EF6F1B1016D800BDDDAD /* star_yellow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		3D38EF5C1B1015EC00BDDDAD /* JLStarRatingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLStarRatingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D38EF611B1015EC00BDDDAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D38EF621B1015EC00BDDDAD /* JLStarRatingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLStarRatingTests.swift; sourceTree = "<group>"; };
+		3D38EF6C1B10160A00BDDDAD /* JLStarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLStarRatingView.swift; sourceTree = "<group>"; };
+		3D38EF6E1B1016D800BDDDAD /* star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_gray.png; sourceTree = "<group>"; };
+		3D38EF6F1B1016D800BDDDAD /* star_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_yellow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,9 @@
 		3D38EF491B1015EC00BDDDAD /* JLStarRating */ = {
 			isa = PBXGroup;
 			children = (
+				3D38EF6E1B1016D800BDDDAD /* star_gray.png */,
+				3D38EF6F1B1016D800BDDDAD /* star_yellow.png */,
+				3D38EF6C1B10160A00BDDDAD /* JLStarRatingView.swift */,
 				3D38EF4C1B1015EC00BDDDAD /* AppDelegate.swift */,
 				3D38EF4E1B1015EC00BDDDAD /* ViewController.swift */,
 				3D38EF501B1015EC00BDDDAD /* Main.storyboard */,
@@ -192,6 +201,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D38EF701B1016D800BDDDAD /* star_gray.png in Resources */,
+				3D38EF711B1016D800BDDDAD /* star_yellow.png in Resources */,
 				3D38EF521B1015EC00BDDDAD /* Main.storyboard in Resources */,
 				3D38EF571B1015EC00BDDDAD /* LaunchScreen.xib in Resources */,
 				3D38EF541B1015EC00BDDDAD /* Images.xcassets in Resources */,
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D38EF4F1B1015EC00BDDDAD /* ViewController.swift in Sources */,
+				3D38EF6D1B10160A00BDDDAD /* JLStarRatingView.swift in Sources */,
 				3D38EF4D1B1015EC00BDDDAD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
