@@ -17,13 +17,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7B-s8-nyL" customClass="JLStarRatingView" customModule="JLStarRating" customModuleProvider="target">
-                                <rect key="frame" x="100" y="260" width="400" height="80"/>
+                                <rect key="frame" x="200" y="280" width="200" height="40"/>
                                 <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_gray.png"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fillImage" value="star_yellow.png"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="star_gray.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="fillImage" value="star_yellow.png"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="4.7000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

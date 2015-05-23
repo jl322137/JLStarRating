@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class JLStarRatingView: UIView {
+public class JLStarRatingView: UIView {
 
     @IBInspectable var starCount: NSInteger = 5 {
         didSet {
@@ -23,39 +23,92 @@ class JLStarRatingView: UIView {
         }
 
     }
+
     @IBInspectable var fillImage: UIImage = UIImage() {
         didSet {
             self.initialSetup()
         }
     }
 
+    @IBInspectable var progress: CGFloat = 0 {
+        didSet {
+            if progress > CGFloat(self.starCount) {
+                progress = CGFloat(self.starCount)
+            }
+            else if progress < 0 {
+                progress = 0
+            }
+
+            self.initialSetup()
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initialSetup()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initialSetup()
     }
 
-    override func prepareForInterfaceBuilder() {
-        self.initialSetup()
+    override public func prepareForInterfaceBuilder() {
+        
     }
 
     func initialSetup() {
+
+        for subview in self.subviews {
+            subview.removeFromSuperview()
+        }
+
         for var i = 0; i < starCount; i++ {
-            var imageView: UIImageView = UIImageView(image: emptyImage)
-            let size: CGSize = imageView.image!.size
-            imageView.frame = CGRectMake(CGFloat(i) * size.width, (self.bounds.height - size.height) / 2, size.width, size.height)
+            //背景图片view
+            var size: CGSize = emptyImage.size
+            size = CGSize(width: size.width / UIScreen.mainScreen().scale, height: size.height / UIScreen.mainScreen().scale)
+
+            let frame = CGRectMake(CGFloat(i) * size.width, (self.bounds.height - size.height) / 2, size.width, size.height)
+
+            var fillPercent = self.progress - CGFloat(i);
+            var imageView = self.createStar(frame, fillPercent:fillPercent);
             addSubview(imageView);
         }
 
         self.invalidateIntrinsicContentSize()
     }
 
-    override func intrinsicContentSize() -> CGSize {
-        let size: CGSize  = emptyImage.size
+    func createStar(frame: CGRect, var fillPercent: CGFloat) -> UIImageView {
+
+        if fillPercent > 1 {
+            fillPercent = 1
+        }
+
+        if fillPercent < 0 {
+            fillPercent = 0
+        }
+
+        //背景图片view
+        var imageView: UIImageView = UIImageView(image: emptyImage)
+        imageView.frame = frame
+
+        let imageWidth = fillImage.size.width / UIScreen.mainScreen().scale
+        let imageHeight = fillImage.size.height / UIScreen.mainScreen().scale
+        let scale = UIScreen.mainScreen().scale
+
+        //用高亮image做覆盖
+        if fillPercent > 0 {
+            let layer = CALayer()
+            var imageRef = CGImageCreateWithImageInRect(fillImage.CGImage , CGRectMake(-imageWidth * scale * (1 - fillPercent), 0, imageWidth * scale, imageHeight * scale));
+            layer.contents = imageRef
+            layer.frame = CGRectMake(0, 0, imageWidth * fillPercent, imageHeight)
+            imageView.layer.addSublayer(layer)
+        }
+
+        return imageView
+    }
+
+    override public func intrinsicContentSize() -> CGSize {
+        var size: CGSize  = emptyImage.size
+        size = CGSize(width: size.width / UIScreen.mainScreen().scale, height: size.height / UIScreen.mainScreen().scale)
         return CGSize(width: CGFloat(self.starCount) * size.width, height: size.height)
     }
 }
